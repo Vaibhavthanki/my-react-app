@@ -13,8 +13,18 @@ export default function Counter() {
     setCounter(counter - 1);
     console.log(counter, "check2");
   };
+
+  const handleChange = (event) => {
+    console.log(event.target.value, "check3");
+  };
   return (
     <div>
+      <input
+        type="number"
+        className="form-control w-25 mx-auto my-3"
+        placeholder="Enter number here"
+        onChange={handleChange}
+      />
       <button onClick={decrement}>-</button>
       <button onClick={increment}>+</button>
       {counter}
