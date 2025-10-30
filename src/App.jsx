@@ -1,4 +1,5 @@
 import Counter from "./counter";
+import Product from "./Product";
 import ProductList from "./ProductList";
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     //   <h2>Welcome to my React App</h2>
     // </>
     // <ProductList />
-    <Counter />
+    // <Counter />
+    <Product />
   );
 }
 
