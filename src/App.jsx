@@ -1,6 +1,7 @@
 import Counter from "./counter";
 import Product from "./Product";
 import ProductList from "./ProductList";
+import { Registration } from "./Registration";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
     // </>
     // <ProductList />
     // <Counter />
-    <Product />
+    // <Product />
+    <Registration />
   );
 }
 
