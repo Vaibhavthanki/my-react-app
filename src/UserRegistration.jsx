@@ -86,6 +86,7 @@ export default function UserRegistration() {
     e.preventDefault();
     let isValid = true;
     const formKeys = Object.keys(formData);
+    // ["username", "email", "password"]
     let i = 0;
     while (i < formKeys.length) {
       const key = formKeys[i];
@@ -98,7 +99,18 @@ export default function UserRegistration() {
     }
     console.log("check error", isValid);
     if (isValid) {
+      console.log("formData", formData);
       // proceed with form submission
+      fetch("https://fakestoreapi.com/users", {
+        "content-type": "application/json",
+        method: "POST",
+        body: JSON.stringify({
+          ...formData,
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => console.log("response", json))
+        .catch((error) => console.error("Error fetching products:", error));
     }
   };
 
