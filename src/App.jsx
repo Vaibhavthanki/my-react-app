@@ -1,5 +1,6 @@
 import Counter from "./counter";
 import FormikBasicForm from "./FormikBasicForm";
+import FormikHook from "./FormikHook";
 import FormikWithValidation from "./FormikWithValidation";
 import Product from "./Product";
 import ProductList from "./ProductList";
@@ -18,7 +19,8 @@ function App() {
     // <Registration />
     // <UserRegistration />
     // <FormikBasicForm />
-    <FormikWithValidation />
+    // <FormikWithValidation />
+    <FormikHook />
   );
 }
 
