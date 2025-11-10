@@ -1,3 +1,4 @@
+import Axios from "./Axios";
 import Counter from "./counter";
 import FormikBasicForm from "./FormikBasicForm";
 import FormikHook from "./FormikHook";
@@ -20,7 +21,8 @@ function App() {
     // <UserRegistration />
     // <FormikBasicForm />
     // <FormikWithValidation />
-    <FormikHook />
+    // <FormikHook />
+    <Axios />
   );
 }
 
