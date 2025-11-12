@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 export default function UserRegistration() {
@@ -82,35 +83,52 @@ export default function UserRegistration() {
     handleAllValidation(value, name);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let isValid = true;
-    const formKeys = Object.keys(formData);
-    // ["username", "email", "password"]
-    let i = 0;
-    while (i < formKeys.length) {
-      const key = formKeys[i];
-      const errorMessage = handleAllValidation(formData[key], key);
-      if (!errorMessage) {
-        isValid = false;
-        break;
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      let isValid = true;
+      const formKeys = Object.keys(formData);
+      // ["username", "email", "password"]
+      let i = 0;
+      while (i < formKeys.length) {
+        const key = formKeys[i];
+        const errorMessage = handleAllValidation(formData[key], key);
+        if (!errorMessage) {
+          isValid = false;
+          break;
+        }
+        i++;
       }
-      i++;
-    }
-    console.log("check error", isValid);
-    if (isValid) {
-      console.log("formData", formData);
-      // proceed with form submission
-      fetch("https://fakestoreapi.com/users", {
-        "content-type": "application/json",
-        method: "POST",
-        body: JSON.stringify({
-          ...formData,
-        }),
-      })
-        .then((res) => res.json())
-        .then((json) => console.log("response", json))
-        .catch((error) => console.error("Error fetching products:", error));
+      console.log("check error", isValid);
+      if (isValid) {
+        console.log("formData", formData);
+        // proceed with form submission
+        // fetch("https://fakestoreapi.com/users", {
+        //   "content-type": "application/json",
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     ...formData,
+        //   }),
+        // })
+        //   .then((res) => res.json())
+        //   .then((json) => console.log("response", json))
+        //   .catch((error) => console.error("Error fetching products:", error));
+
+        const response = await axios.post(
+          "https://fakestoreapi.com/users",
+          {
+            ...formData,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("response", response.data);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
     }
   };
 

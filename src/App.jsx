@@ -6,6 +6,7 @@ import Product from "./Product";
 import ProductList from "./ProductList";
 import { Registration } from "./Registration";
 import UserRegistration from "./userRegistration";
+import PaginationWithMui from "./PaginationWithMui";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
     // <FormikBasicForm />
     // <FormikWithValidation />
     // <FormikHook />
-    <Axios />
+    // <Axios />
+    <PaginationWithMui />
   );
 }
 
