@@ -7,6 +7,8 @@ import ProductList from "./ProductList";
 import { Registration } from "./Registration";
 import UserRegistration from "./userRegistration";
 import PaginationWithMui from "./PaginationWithMui";
+import DataGridWithMui from "./DataGridWithMui";
+import Crud from "./Crud";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
     // <FormikWithValidation />
     // <FormikHook />
     // <Axios />
-    <PaginationWithMui />
+    // <PaginationWithMui />
+    // <DataGridWithMui />
+    <Crud />
   );
 }
 
