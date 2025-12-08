@@ -7,14 +7,11 @@ import TableData from "./tableData";
 
 export default function Crud() {
   const [open, setOpen] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [data, setData] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   const formik = useFormik({
@@ -32,7 +29,12 @@ export default function Crud() {
     }),
   });
 
-  const { handleSubmit, values, isValid } = formik;
+  const { handleSubmit, values, isValid, resetForm, setValues } = formik;
+
+  const handleClose = () => {
+    setOpen(false);
+    resetForm();
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -40,10 +42,29 @@ export default function Crud() {
     if (!isValid) {
       return;
     } else {
-      setData([...data, values]);
+      if (isEdit) {
+        console.log(data, "check46", values);
+        const updatedData = data?.map((item) =>
+          item.id === values.id ? values : item
+        );
+        setData(updatedData);
+        setIsEdit(false);
+      } else {
+        setData([...data, { ...values, id: data.length + 1 }]);
+      }
     }
 
     handleClose();
+  };
+
+  const handleEdit = (values) => {
+    setIsEdit(true);
+    setOpen(true);
+    setValues(values);
+  };
+
+  const handleDelete = (id) => {
+    setData(data.filter((item) => item.id !== id));
   };
 
   return (
@@ -56,8 +77,13 @@ export default function Crud() {
         onClose={handleClose}
         onSubmit={handleFormSubmit}
         formik={formik}
+        isEdit={isEdit}
       />
-      <TableData data={data} />
+      <TableData
+        data={data}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </>
   );
 }
