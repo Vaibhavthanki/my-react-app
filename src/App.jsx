@@ -9,6 +9,10 @@ import UserRegistration from "./userRegistration";
 import PaginationWithMui from "./PaginationWithMui";
 import DataGridWithMui from "./DataGridWithMui";
 import Crud from "./Crud";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./home";
+import { About } from "./about";
+import { Navigation } from "./Navigation";
 
 function App() {
   return (
@@ -27,7 +31,17 @@ function App() {
     // <Axios />
     // <PaginationWithMui />
     // <DataGridWithMui />
-    <Crud />
+    <div>
+      <BrowserRouter>
+        <Navigation />
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/registration" element={<Registration />} />
+          {/* <Route path="/crud" element={<Crud />} /> */}
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

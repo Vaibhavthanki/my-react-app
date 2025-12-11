@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const Registration = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location, "checklocation");
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -67,6 +73,7 @@ export const Registration = () => {
         [key]: errorMessage,
       }));
     });
+    navigate("/home");
   };
 
   const handleChange = (e) => {
