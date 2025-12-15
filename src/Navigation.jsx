@@ -13,6 +13,9 @@ export const Navigation = () => {
             <div className="col mr-3">
               <Link to="/about">About</Link>
             </div>
+            <div className="col mr-3">
+              <Link to="/parent">Parent</Link>
+            </div>
           </div>
         </div>
       </div>

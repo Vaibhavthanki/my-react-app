@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./home";
 import { About } from "./about";
 import { Navigation } from "./Navigation";
+import { ParentComponent } from "./ParentComponent";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/registration" element={<Registration />} />
           {/* <Route path="/crud" element={<Crud />} /> */}
+          <Route path="/parent" element={<ParentComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
