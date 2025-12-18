@@ -4,7 +4,6 @@ export const Reducer = () => {
   const handleReducer = (state, action) => {
     switch (action.type) {
       case "SET_CURRENT_USER":
-        console.log(action, "check7", state);
         return { ...state, currentUser: action.payload };
       case "Add_USER":
         return {
@@ -53,7 +52,6 @@ export const Reducer = () => {
     [data.currentUser]
   );
 
-  console.log(data.currentUser, "checkReducer");
   const { currentUser, editIndex } = data;
   const { firstName, lastName, email } = currentUser;
 
