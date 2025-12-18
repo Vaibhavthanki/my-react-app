@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import FormDialog from "./FormDialog";
 import { Button } from "@mui/material";
 import { useFormik } from "formik";
@@ -10,9 +10,9 @@ export default function Crud() {
   const [isEdit, setIsEdit] = useState(false);
   const [data, setData] = useState([]);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = useCallback(() => {
     setOpen(true);
-  };
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -31,10 +31,10 @@ export default function Crud() {
 
   const { handleSubmit, values, isValid, resetForm, setValues } = formik;
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false);
     resetForm();
-  };
+  }, [resetForm]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -57,15 +57,65 @@ export default function Crud() {
     handleClose();
   };
 
-  const handleEdit = (values) => {
-    setIsEdit(true);
-    setOpen(true);
-    setValues(values);
-  };
+  const handleEdit = useCallback(
+    (editData) => {
+      setIsEdit(true);
+      setOpen(true);
+      setValues(editData);
+    },
+    [setValues]
+  );
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  const handleDelete = useCallback((id) => {
+    setData((prev) => prev.filter((item) => item.id !== id));
+  }, []);
+
+  const columns = useMemo(
+    () => [
+      {
+        field: "firstName",
+        headerName: "First Name",
+        width: 250,
+        editable: true,
+      },
+      {
+        field: "lastName",
+        headerName: "Last Name",
+        width: 250,
+        editable: true,
+      },
+      {
+        field: "email",
+        headerName: "Email",
+        width: 250,
+        editable: true,
+      },
+      {
+        filed: "action",
+        headerName: "Action",
+        width: 250,
+        renderCell: (params) => {
+          return (
+            <div>
+              <button
+                className="btn btn-primary mr-2"
+                onClick={() => handleEdit(params.row)}
+              >
+                Edit
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={() => handleDelete(params.row.id)}
+              >
+                Delete
+              </button>
+            </div>
+          );
+        },
+      },
+    ],
+    [handleDelete, handleEdit]
+  );
 
   return (
     <>
@@ -83,6 +133,7 @@ export default function Crud() {
         data={data}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
+        columns={columns}
       />
     </>
   );

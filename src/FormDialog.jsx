@@ -8,8 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 export default function FormDialog({ open, onClose, onSubmit, formik }) {
-  const { values, handleChange, handleBlur, errors } = formik;
-  console.log("Formik Errors:", errors);
+  const { values, handleChange, handleBlur } = formik;
   return (
     <React.Fragment>
       <Dialog open={open} onClose={onClose}>

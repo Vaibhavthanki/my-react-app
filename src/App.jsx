@@ -14,6 +14,8 @@ import { Home } from "./home";
 import { About } from "./about";
 import { Navigation } from "./Navigation";
 import { ParentComponent } from "./ParentComponent";
+import { RenderCycle } from "./renderCycle";
+import { Reducer } from "./Reducer";
 
 function App() {
   return (
@@ -39,8 +41,10 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/registration" element={<Registration />} />
-          {/* <Route path="/crud" element={<Crud />} /> */}
+          <Route path="/crud" element={<Crud />} />
           <Route path="/parent" element={<ParentComponent />} />
+          <Route path="/rendercycle" element={<RenderCycle />} />
+          <Route path="/reducer" element={<Reducer />} />
         </Routes>
       </BrowserRouter>
     </div>
