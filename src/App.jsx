@@ -16,6 +16,7 @@ import { Navigation } from "./Navigation";
 import { ParentComponent } from "./ParentComponent";
 import { RenderCycle } from "./renderCycle";
 import { Reducer } from "./Reducer";
+import { Language } from "./Language";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/parent" element={<ParentComponent />} />
           <Route path="/rendercycle" element={<RenderCycle />} />
           <Route path="/reducer" element={<Reducer />} />
+          <Route path="/language" element={<Language />} />
         </Routes>
       </BrowserRouter>
     </div>
