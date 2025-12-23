@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import ProductCard from "./ProductCard";
@@ -8,19 +8,39 @@ import CounterWithProps from "./CounterWithProps";
 export default function Axios() {
   const [data, setData] = useState(null);
   //   const [counter, setCounter] = useState(0);
+  const initialRender = useRef(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://fakestoreapi.com/products");
-        console.log("Data fetched successfully:", response.data);
-        setData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+  // useEffect(() => {
+  //   if (initialRender.current) {
+  //     initialRender.current = false;
+  //     const fetchData = async () => {
+  //       try {
+  //         const response = await axios.get("https://fakestoreapi.com/products");
+  //         console.log("Data fetched successfully:", response.data);
+  //         setData(response.data);
+  //       } catch (error) {
+  //         console.error("Error fetching data:", error);
+  //       }
+  //     };
+  //     fetchData();
+  //   }
+  // }, []);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      console.log("Data fetched successfully:", response.data);
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      fetchData();
+    }
+  }, [fetchData]);
 
   //   const handleIncrement = () => {
   //     setCounter(counter + 1);

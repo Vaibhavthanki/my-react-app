@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
-const ChildComponent = ({ data }) => {
-  console.log(data, "check4");
+const ChildComponent = ({ data, handleSubmit }) => {
+  console.log(data, "check4", handleSubmit);
   return <div>ChildComponent</div>;
 };
 

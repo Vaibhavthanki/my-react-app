@@ -17,6 +17,8 @@ import { ParentComponent } from "./ParentComponent";
 import { RenderCycle } from "./renderCycle";
 import { Reducer } from "./Reducer";
 import { Language } from "./Language";
+import ReactUseCallback from "./ReactUseCallback";
+import { ReactUseRef } from "./ReactUseRef";
 
 function App() {
   return (
@@ -43,10 +45,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/crud" element={<Crud />} />
-          <Route path="/parent" element={<ParentComponent />} />
+          <Route path="/parent" element={<ReactUseCallback />} />
           <Route path="/rendercycle" element={<RenderCycle />} />
           <Route path="/reducer" element={<Reducer />} />
           <Route path="/language" element={<Language />} />
+          <Route path="/ref" element={<ReactUseRef />} />
+          <Route path="/axios" element={<Axios />} />
         </Routes>
       </BrowserRouter>
     </div>
