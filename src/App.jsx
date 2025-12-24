@@ -19,6 +19,8 @@ import { Reducer } from "./Reducer";
 import { Language } from "./Language";
 import ReactUseCallback from "./ReactUseCallback";
 import { ReactUseRef } from "./ReactUseRef";
+import { ProductData } from "./ProductData";
+import { ProductDesc } from "./ProductDesc";
 
 function App() {
   return (
@@ -51,6 +53,8 @@ function App() {
           <Route path="/language" element={<Language />} />
           <Route path="/ref" element={<ReactUseRef />} />
           <Route path="/axios" element={<Axios />} />
+          <Route path="/productData" element={<ProductData />} />
+          <Route path="/productDesc/:id" element={<ProductDesc />} />
         </Routes>
       </BrowserRouter>
     </div>
