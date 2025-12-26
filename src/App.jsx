@@ -21,6 +21,8 @@ import ReactUseCallback from "./ReactUseCallback";
 import { ReactUseRef } from "./ReactUseRef";
 import { ProductData } from "./ProductData";
 import { ProductDesc } from "./ProductDesc";
+import { UserList } from "./UserList";
+import { UserDetails } from "./userDetails";
 
 function App() {
   return (
@@ -55,6 +57,8 @@ function App() {
           <Route path="/axios" element={<Axios />} />
           <Route path="/productData" element={<ProductData />} />
           <Route path="/productDesc/:id" element={<ProductDesc />} />
+          <Route path="/userList" element={<UserList />} />
+          <Route path="/userDetails" element={<UserDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
