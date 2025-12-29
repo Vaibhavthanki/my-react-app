@@ -23,6 +23,10 @@ import { ProductData } from "./ProductData";
 import { ProductDesc } from "./ProductDesc";
 import { UserList } from "./UserList";
 import { UserDetails } from "./userDetails";
+import { ErrorHandeling } from "./ErrorHandeling";
+import { ErrorBoundary } from "react-error-boundary";
+import FallbackUi from "./FallbackUi";
+import { ErrorBoundaryWrapper } from "./ErrorBoundaryWrapper";
 
 function App() {
   return (
@@ -43,23 +47,26 @@ function App() {
     // <DataGridWithMui />
     <div>
       <BrowserRouter>
-        <Navigation />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/crud" element={<Crud />} />
-          <Route path="/parent" element={<ReactUseCallback />} />
-          <Route path="/rendercycle" element={<RenderCycle />} />
-          <Route path="/reducer" element={<Reducer />} />
-          <Route path="/language" element={<Language />} />
-          <Route path="/ref" element={<ReactUseRef />} />
-          <Route path="/axios" element={<Axios />} />
-          <Route path="/productData" element={<ProductData />} />
-          <Route path="/productDesc/:id" element={<ProductDesc />} />
-          <Route path="/userList" element={<UserList />} />
-          <Route path="/userDetails" element={<UserDetails />} />
-        </Routes>
+        <ErrorBoundaryWrapper>
+          <Navigation />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/crud" element={<Crud />} />
+            <Route path="/parent" element={<ReactUseCallback />} />
+            <Route path="/rendercycle" element={<RenderCycle />} />
+            <Route path="/reducer" element={<Reducer />} />
+            <Route path="/language" element={<Language />} />
+            <Route path="/ref" element={<ReactUseRef />} />
+            <Route path="/axios" element={<Axios />} />
+            <Route path="/productData" element={<ProductData />} />
+            <Route path="/productDesc/:id" element={<ProductDesc />} />
+            <Route path="/userList" element={<UserList />} />
+            <Route path="/userDetails" element={<UserDetails />} />
+            <Route path="/errorHandeling" element={<ErrorHandeling />} />
+          </Routes>
+        </ErrorBoundaryWrapper>
       </BrowserRouter>
     </div>
   );

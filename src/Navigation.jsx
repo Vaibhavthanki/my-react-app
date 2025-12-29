@@ -79,6 +79,9 @@ export const Navigation = () => {
             <div className="col mr-3">
               <Link to="/userList">UserList</Link>
             </div>
+            <div className="col mr-3">
+              <Link to="/errorHandeling">ErrorHandeling</Link>
+            </div>
             {/* <div className="col mr-3">
               <button onClick={handleClick}>Registration</button>
             </div> */}
