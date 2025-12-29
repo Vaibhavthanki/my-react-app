@@ -8,10 +8,10 @@ export const ErrorHandeling = () => {
   return (
     <>
       <button onClick={handleClick}>Click Me</button>
-      {isClicked &&
+      {/* {isClicked &&
         c.map((value) => {
           return <div>{value}</div>;
-        })}
+        })} */}
     </>
   );
 };
