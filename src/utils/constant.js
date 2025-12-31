@@ -1,0 +1,5 @@
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const GET_USER_DATA = "GET_USER_DATA";
+export const SET_USER_DATA = "SET_USER_DATA";
+export const HANDLE_USER_DATA_ERROR = "HANDLE_USER_DATA_ERROR";

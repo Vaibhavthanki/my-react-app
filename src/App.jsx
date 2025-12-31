@@ -27,6 +27,10 @@ import { ErrorHandeling } from "./ErrorHandeling";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackUi from "./FallbackUi";
 import { ErrorBoundaryWrapper } from "./ErrorBoundaryWrapper";
+import ReduxCounter from "./reduxCounter";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import { AxiosWithRedux } from "./AxiosWithRedux";
 
 function App() {
   return (
@@ -47,26 +51,30 @@ function App() {
     // <DataGridWithMui />
     <div>
       <BrowserRouter>
-        <ErrorBoundaryWrapper>
-          <Navigation />
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/crud" element={<Crud />} />
-            <Route path="/parent" element={<ReactUseCallback />} />
-            <Route path="/rendercycle" element={<RenderCycle />} />
-            <Route path="/reducer" element={<Reducer />} />
-            <Route path="/language" element={<Language />} />
-            <Route path="/ref" element={<ReactUseRef />} />
-            <Route path="/axios" element={<Axios />} />
-            <Route path="/productData" element={<ProductData />} />
-            <Route path="/productDesc/:id" element={<ProductDesc />} />
-            <Route path="/userList" element={<UserList />} />
-            <Route path="/userDetails" element={<UserDetails />} />
-            <Route path="/errorHandeling" element={<ErrorHandeling />} />
-          </Routes>
-        </ErrorBoundaryWrapper>
+        <Provider store={store}>
+          <ErrorBoundaryWrapper>
+            <Navigation />
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/crud" element={<Crud />} />
+              <Route path="/parent" element={<ReactUseCallback />} />
+              <Route path="/rendercycle" element={<RenderCycle />} />
+              <Route path="/reducer" element={<Reducer />} />
+              <Route path="/language" element={<Language />} />
+              <Route path="/ref" element={<ReactUseRef />} />
+              <Route path="/axios" element={<Axios />} />
+              <Route path="/productData" element={<ProductData />} />
+              <Route path="/productDesc/:id" element={<ProductDesc />} />
+              <Route path="/userList" element={<UserList />} />
+              <Route path="/userDetails" element={<UserDetails />} />
+              <Route path="/errorHandeling" element={<ErrorHandeling />} />
+              <Route path="/redux" element={<ReduxCounter />} />
+              <Route path="/axiosWithRedux" element={<AxiosWithRedux />} />
+            </Routes>
+          </ErrorBoundaryWrapper>
+        </Provider>
       </BrowserRouter>
     </div>
   );
