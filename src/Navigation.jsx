@@ -85,6 +85,9 @@ export const Navigation = () => {
             <div className="col mr-3">
               <Link to="/redux">Redux</Link>
             </div>
+            <div className="col mr-3">
+              <Link to="/axiosWithRedux">AxiosWithRedux</Link>
+            </div>
             {/* <div className="col mr-3">
               <button onClick={handleClick}>Registration</button>
             </div> */}
