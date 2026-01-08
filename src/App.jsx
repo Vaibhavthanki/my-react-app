@@ -31,6 +31,8 @@ import ReduxCounter from "./reduxCounter";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { AxiosWithRedux } from "./AxiosWithRedux";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
@@ -55,6 +57,9 @@ function App() {
           <ErrorBoundaryWrapper>
             <Navigation />
             <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/home" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/registration" element={<Registration />} />

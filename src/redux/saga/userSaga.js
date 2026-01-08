@@ -1,4 +1,3 @@
-import axios from "axios";
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
   deleteUserDataSuccess,
@@ -6,10 +5,11 @@ import {
   setUserData,
 } from "../action/userAction";
 import { DELETE_USER_DATA, GET_USER_DATA } from "../../utils/constant";
+import axiosInstance from "../../config/axiosInstance";
 
 function* getUserDataFromAPI() {
   try {
-    const response = yield call(axios.get, "https://fakestoreapi.com/products");
+    const response = yield call(axiosInstance.get, "products");
     console.log(response.data, "check9");
     yield put(setUserData(response.data));
   } catch (error) {
@@ -21,8 +21,8 @@ function* getUserDataFromAPI() {
 function* deleteUserData(action) {
   try {
     const response = yield call(
-      axios.delete,
-      `https://fakestoreapi.com/products/${action.payload}`
+      axiosInstance.delete,
+      `products/${action.payload}`
     );
     console.log(response.data, "check9");
     yield put(deleteUserDataSuccess(action.payload));

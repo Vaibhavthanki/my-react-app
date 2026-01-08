@@ -16,6 +16,7 @@
     "@mui/x-data-grid": "^8.17.0",
     "axios": "^1.13.2",
     "formik": "^2.4.6",
+    "js-cookie": "^3.0.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-error-boundary": "^6.0.1",

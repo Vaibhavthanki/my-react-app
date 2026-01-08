@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 // Create an Axios instance
 const axiosInstance = axios.create({
@@ -6,21 +7,22 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
-// Function to get the stored token
+// Function to get the stored token from cookies
 const getToken = () => {
-  return localStorage.getItem("access_token");
+  return Cookies.get("access_token");
 };
 
-// Function to get the refresh token
-const getRefreshToken = () => {
-  return localStorage.getItem("refresh_token");
-};
+// Function to get the refresh token from cookies
+// const getRefreshToken = () => {
+//   return Cookies.get("refreshToken");
+// };
 
-// Function to set the new access token
+// Function to set the new access token in cookies
 const setAccessToken = (token) => {
-  localStorage.setItem("access_token", token);
+  Cookies.set("access_token", token, { expires: 7 });
 };
 
 let isRefreshing = false;
@@ -43,16 +45,22 @@ const refreshAccessToken = async () => {
   isRefreshing = true;
 
   try {
-    const refreshToken = getRefreshToken();
-    const response = await axios.post("/auth/refresh", {
-      refresh_token: refreshToken,
-    }); // Replace with your refresh token API
-    const { access_token } = response.data;
-    setAccessToken(access_token);
+    const response = await axios.post(
+      "http://localhost:4000/accounts/refresh-token",
+      {},
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    ); // The refresh token is sent via cookies automatically
+    const { jwtToken } = response.data;
+    setAccessToken(jwtToken);
     isRefreshing = false;
 
-    onRefreshed(access_token); // Notify all waiting requests
-    return access_token;
+    onRefreshed(jwtToken); // Notify all waiting requests
+    return jwtToken;
   } catch (error) {
     isRefreshing = false;
     console.error("Error refreshing token", error);
